@@ -1,5 +1,4 @@
 <?php
-// update_contact_type.php
 
 $host = 'localhost:3307';
 $username = 'Peter';
@@ -12,7 +11,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['contact_id']) && isset(
     $contact_id = filter_input(INPUT_GET, 'contact_id', FILTER_SANITIZE_STRING);
     $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
 
-    // You may want to perform additional validation on $contact_id and $action
 
     if ($action === 'assignToMe') {
         // Assign the current contact to the current user
