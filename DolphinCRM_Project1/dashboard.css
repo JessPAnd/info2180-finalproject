@@ -1,0 +1,119 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+*{
+    margin: 0;
+    padding: 0;
+   
+    font-family: "Poppins", sans-serif;
+}
+
+
+/* MAIN BODY*/
+.main--content{
+    position: relative;
+    background-color: midnightblue;
+    width: 100%;
+    padding: 5px;
+}
+.header--wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    flex-wrap: wrap;
+    background-color: midnightblue;
+    border-radius: 10px;
+    padding: 5px;
+    margin-bottom: 1rem;
+    
+}
+.header--title{
+    color: white;
+    font-size: 22 ;
+    font-family: 'Times New Roman', Times, serif ;
+    text-align: justify;
+}
+
+
+/* THE SIDE BAR LAYOUT*/
+.sidebar{
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 240px;
+    height: 100vh;
+    padding: 0 1.7rem;
+    color: black;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    
+}
+
+
+.dolphinLogo{
+    height: 80px;
+    padding: 16px;
+}
+
+.menu{
+    height: 88%;
+    position: relative;
+    list-style-type: none;
+    padding:0;
+}
+
+menu li {
+    padding: 2rem;
+    margin: 8px 0;
+    border-radius: 8px;
+    
+}
+.menu li:hover {
+    background-color: gainsboro;
+}
+.menu a {
+    color: black;
+    font-size: 14px;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+
+/*Style for primary dashborad */
+.filter-section {
+    margin-bottom: 20px;
+}
+
+ /*Style for the contact table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+    background-color: lightgrey;
+    box-shadow: 0 0 10px darkgrey;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+ /*Style for the "Add New Contact" button*/
+.add-contact-btn {
+    float: right;
+    padding: 10px;
+    background-color: blue;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.add-contact-btn:hover {
+    background-color: darkblue;
+}
