@@ -1,49 +1,64 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Dolphin CRM</title>
-        <meta charset= "utf-8"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="AddUser.css">
-        <script src="AddUser.js"></script>
-    </head>
-    <body>
-        <header class="container">
-            <img class="dolphin" src="Dolphin.png"> 
-            <h4>Dolphin CRM</h4>
-        </header>
-        <main>
-            <aside class ="sidebar">
-                <nav>
-                    <ul>
-                        <li>
-                            <img class = "homeimg" src="icons8-home-50.png" alt="Home">
-                            <p><a href="link to dashboard">Home</a></p>
-                        </li>
-                        <li>
-                            <img class = "contactimg" src="icons8-contacts-50.png" alt="New Contact">
-                            <p><a href="link to new contant">New Contact</a></p>
-                        </li>
-                        <li>
-                            <img class = "usersimg" src="icons8-users-30.png" alt="List of Users">
-                            <p><a href="ViewUsers.php">List of Users</a></p>
-                        </li>
-                        <hr>
-                        <li>
-                            <img class = "logoutimg" src="icons8-logout-48.png" alt="Logout">
-                            <p><a href="Logout.php">Logout</a></p>
-                        </li>
-                    </ul>
-                </nav>
-            </aside>
-            
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dolphin CRM</title>
+    <link rel="stylesheet" href="AddUser.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"/>
+</head>
+
+<body>
+     <header>
+        <div class="main--content">
+           <div class="header--wrapper">
+              <div class="header--title">
+                <h4>Dolphin CRM</h4>
+              </div>   
+            </div>
+        </div>  
+     </header>
+      <nav class = "sidebar">
+         <div class ="dolphinLogo"></div>
+           <ul class="menu">
+              <li>
+                  <a href="dashboard.html">
+                      <i class="fas fa-home"></i>
+                      <span> Home</span>
+                  </a>
+              </li>
+            <br>
+              <li>
+                   <a href="New-contact.php">
+                     <i class="far fa-user-circle"></i>
+                     <span>New Contact</span>
+                   </a>
+              </li>
+            <br>
+               <li>
+                   <a href="ViewUsers.html">
+                     <i class="fas fa-users"></i>
+                     <span>Users</span>
+                   </a>
+             </li>
+            <br>
+            <br>
+               <li>
+                   <a href="Logout.php">
+                     <i class="fa fa-sign-out"></i>
+                     <span>Logout</span>
+                   </a>
+              </li>
+          </ul>
+     </nav>
+
             <section class = "form">
                 <div class = "containterform">
                     <h1><b>NEW USER</b></h1>
                 </div>
 
                 <form id="form" action="AddUser.php" method="post">
-
                     <div class= "fname">
                         <label for="fname">First Name:</label><br>
                         <input type="text" id="fname" name="fname" placeholder="John" required><br>
