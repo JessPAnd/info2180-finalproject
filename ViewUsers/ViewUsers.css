@@ -1,0 +1,78 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    background-color: rgb(180, 178, 178);
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background-color: rgb(7, 7, 54);
+    color: white;
+}
+
+.container img {
+    height: 50px;
+    margin-right: 20px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 220px;
+    height: 150%;
+    background-color: white;
+    color: #32332C;
+    transition: all 0.3s ease;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logout {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.homeimg, .contactimg, .usersimg, .logoutimg {
+    height: 30px;
+    margin-right: 10px;
+}
+
+.link a {
+    text-decoration: none;
+    color: black;
+}
+
+.link:hover {
+    background-color: grey;
+}
+
+table thead{
+    background-color: #F3F4F6;
+    height: 50px;   
+}
+
+table tbody tr{
+    border-bottom: 1px solid lightgray;
+    height: 40px;
+}
+
+table tbody tr .name{
+    font-weight: bold;
+}
+
+.email, .role, .created_at{
+   color: #a7a9b3;
+}
