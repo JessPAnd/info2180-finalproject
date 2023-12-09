@@ -1,0 +1,112 @@
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    background-color: rgb(180, 178, 178);
+}
+
+.container {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 20px;
+    background-color: rgb(7, 7, 54);
+    color: white;
+}
+
+.container img {
+    height: 50px;
+    margin-right: 20px;
+}
+
+.sidebar {
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 220px;
+    height: 150%;
+    background-color: white;
+    color: #32332C;
+    transition: all 0.3s ease;
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logout {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.homeimg, .contactimg, .usersimg, .logoutimg {
+    height: 30px;
+    margin-right: 10px;
+}
+
+.link a {
+    text-decoration: none;
+    color: black;
+}
+
+.link:hover {
+    background-color: grey;
+}
+
+.form {
+    flex-grow: 1;
+    padding: 20px;
+    color: black;
+    margin-left: 350px; 
+    width: 130%; 
+    height: 100%;
+    background-color: white;
+    box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
+}
+
+.containterform {
+    background-color: white;
+    padding: 40px;
+}
+
+.fname, .lname, .email, .password {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.fname input, .lname input, .email input, .password input {
+    width: 70%; 
+}
+
+input, select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 40px;
+}
+
+.btn {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+    float: right;
+}
+
+footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color:rgb(7, 7, 54);
+    color: white;
+    text-align: center;
+    padding: 1px 0;
+}
