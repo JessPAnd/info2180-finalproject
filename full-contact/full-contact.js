@@ -3,41 +3,64 @@ window.onload = () => {
     contactId = 1;
     result = document.querySelector('.content');
 
-    fetch(`http://localhost/info2180-project2/full-contact/full-contact.php?contact_id=${contactId}`)
-    .then(response => {
-        if(response.ok) {
-            return response.text();
-        }
-    })
-    .then(data => {
-        result.innerHTML = data;
+    function loadPage() {
+       return fetch(`http://localhost/info2180-project2/full-contact/full-contact.php?contact_id=${contactId}`)
+        .then(response => {
+            if(response.ok) {
+                return response.text();
+            }
+        })
+        .then(data => {
+            console.log("data being passed to innerHtml");
+            result.innerHTML = data;
+            console.log("function after html load");
+    
+        })
+        .catch(error => {
+            console.error("Error fetching data: " + error);
+        });
+    }
 
+    
+
+    function pageEvents() {
         document.querySelector('#notesbutton').addEventListener("click", function (event) {
-            console.log("Event fired");
+            console.log("Note Event fired");
             event.preventDefault();
             postNote(contactId);
-            
         });
 
-         // document.getElementById("assignToMeBtn").addEventListener("click", function () {
-        //     updateContactType('assignToMe', contactId);
-        // });
+         document.getElementById("assign").addEventListener("click", function () {
+            console.log("Assign Event fired");
+            currentUserID = this.getAttribute('current-contact-id')
+            updateContactType('assignToMe', currentUserID);
+        });
     
-        // document.getElementById("switchToSalesLeadBtn").addEventListener("click", function () {
-        //     updateContactType('switchToSalesLead', contactId);
-        // });
+        document.getElementById("switch").addEventListener("click", function () {
+            currentUserID = this.getAttribute('current-contact-id')
+            updateContactType('switchType', currentUserID);
+        });
 
-    })
-    .catch(error => {
-        console.error("Error fetching data: " + error);
-    });
+        console.log('event listeners added');
+    }
+
+        loadPage().then(() => {pageEvents();})
+        
+
+        
+
+  
+
+        
+    
 
     function updateContactType(action, contactId) {
-        fetch(`http://localhost/info2180-project2/full-contact/update-contact-type.php?contact_id=${contactId}&action=${action}`)
+
+        fetch(`http://localhost/info2180-project2/full-contact/full-contact.php?contact_id=${contactId}&action=${action}`)
             .then(response => response.text())
             .then(data => {
+                loadPage();
                 console.log(data);
-                // You can handle the response as needed
             })
             .catch(error => {
                 console.error("Error updating contact type: " + error);
@@ -72,6 +95,7 @@ window.onload = () => {
             // noteText = data;
 
             // error messages are received through here so the function is sending and receiving.
+            loadPage();
             console.log('fetchResponse', responseData)
         })
         .catch(error => {
