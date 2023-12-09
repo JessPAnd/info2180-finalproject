@@ -1,9 +1,5 @@
 <?php
-// header("Access-Control-Allow-Origin:  http://localhost/info2180-project2/*");
-// header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
-// header("Access-Control-Allow-Headers: Content-Type");
 
-// include 'update-contact-type.php';
 session_start();
 $host = 'localhost:3307';
 $username = 'Peter';
@@ -15,32 +11,21 @@ $conn = new PDO("mysql:host=$host;dbname=$dname;charset=utf8mb4", $username, $pa
 $stmt = $conn->query("SELECT * FROM contacts");
 $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 $result = '';
-// if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-//     header("Access-Control-Allow-Origin: *");
-//     header("Access-Control-Allow-Methods: POST, GET, OPTIONS");
-//     header("Access-Control-Allow-Headers: Content-Type");
-//     exit;
-// }
+
+//POST Request for notes
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    //   $contact_id = filter_input(INPUT_POST, 'contact_id', FILTER_SANITIZE_STRING);
-    // $note_text = filter_input(INPUT_POST, 'note_text',  FILTER_SANITIZE_STRING);
+
     
     // For some reason I was having issues retrieving content from $_POST
     $jsonData = file_get_contents("php://input");
     $data = json_decode($jsonData, true); // true for associative array
-    // // Now $data should contain the decoded JSON data
-    // $contact_id = $data['contact_id'];
-    // $note_text = $data['note_text'];
-
-    // $contact_id = filter_input(INPUT_POST, 'contact_id', FILTER_SANITIZE_STRING);
-    // $note_text = filter_input(INPUT_POST, 'note_text',  FILTER_SANITIZE_STRING);
-
+   
+    // Escaping & Sanitizing of Data
     $contact_id = filter_var($data['contact_id'], FILTER_SANITIZE_STRING);
     $escaped_note_text = htmlspecialchars($data['note_text'], ENT_QUOTES, 'UTF-8');
     $note_text = filter_var($escaped_note_text, FILTER_SANITIZE_STRING);
 
        
-        // $current_user_id = $_SESSION['user_id']; 
         if (!empty($contact_id)) {
             $current_user_id = 3; 
 
@@ -56,16 +41,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       
     }
 
+    // GET Request for Assign User & Switching Type
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['contact_id']) && isset($_GET['action'])) {
         $contact_id = filter_input(INPUT_GET, 'contact_id', FILTER_SANITIZE_STRING);
         $action = filter_input(INPUT_GET, 'action', FILTER_SANITIZE_STRING);
     
-    
+         // Assign the current contact to the current user
         if ($action === 'assignToMe') {
-            // Assign the current contact to the current user
-            // Assuming you have a session variable for the current user ID, adjust as needed
-            $current_user_id = $_SESSION['user_id']; // Adjust the session variable based on your implementation
-    
+           
+            //Session variable for the current user ID
+            $current_user_id = $_SESSION['user_id']; 
+
             // Update the 'assigned_to' field in the 'contacts' table
             $stmt = $conn->prepare("UPDATE contacts SET assigned_to = :current_user_id, updated_at = NOW() WHERE id = :contact_id");
             $stmt->bindParam(':current_user_id', $current_user_id, PDO::PARAM_INT);
@@ -74,8 +60,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['contact_id']) && isset(
     
             echo 'Contact assigned to the current user.';
         } elseif ($action === 'switchType') {
-                    // Switch the contact type to 'sales lead' if it is currently 'support'
-                    // Assuming you have a 'type' column in the 'contacts' table, adjust as needed
             
             // Check the current type
             $stmt = $conn->prepare("SELECT contacts.type FROM contacts WHERE id = :contact_id");
@@ -102,7 +86,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['contact_id']) && isset(
             }
             }
     } 
-
+//GET Request to load page
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['contact_id'])) {
     $contact_id = filter_input(INPUT_GET, 'contact_id', FILTER_SANITIZE_STRING);
     $stmt = $conn->prepare('SELECT contacts.*,
@@ -137,64 +121,73 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['contact_id'])) {
     $stmt2->execute();
     $notesresult = $stmt2->fetchAll(PDO::FETCH_ASSOC);
 } 
-    
 
 ?>
 
 
-<!-- Displaying Results -->
+
 <div>
     <?php if (!empty($result)): ?>
-        <div>
+        <div class="profile-top">
+            <section class="profile-name">
+            <div>
+            <img src="./avatar-1577909_1280.png" alt="user avatar">
+            </div>
+            <div>
             <h2><?= $result[0]['firstname'] ?> <?= $result[0]['lastname'] ?></h2>
             <p>Created on: <?= $result[0]['created_at'] ?> by <?= $result[0]['user_firstname'] ?> <?= $result[0]['user_lastname'] ?></p>
             <p>Updated on: <?= $result[0]['updated_at'] ?></p>
-            <button id="assign" current-contact-id="<?= $result[0]['id'] ?>">Assign to me</button>
+            </div>
+            </section>
+            <section class="profile-btns">
+            <button class="btn btn-assign"id="assign" current-contact-id="<?= $result[0]['id'] ?>">Assign to me</button>
             <!-- <button onclick="updateContactType('switchToSalesLead', <?= $result[0]['id'] ?>)">Switch to Sales Lead</button> -->
-           <button id="switch" current-contact-id="<?= $result[0]['id'] ?>">
+           <button class="btn btn-switch" id="switch" current-contact-id="<?= $result[0]['id'] ?>">
                        <?= ($result[0]['type'] === 'Sales Lead') ? 'Switch to Support' : 'Switch to Sales Lead' ?>
                 </button>
+            </section>
         </div>
 
-        <div>
+        <div class="profile-info">
+            <section>
             <p>Email</p>
             <p><?= $result[0]['email'] ?></p>
+            </section>
+            <section>
             <p>Telephone</p>
             <p><?= $result[0]['telephone'] ?></p>
+            </section>
+            <section>
             <p>Compnay</p>
             <p><?= $result[0]['company'] ?></p>
+            </section>
+            <section>
             <p>Assigned To</p>
             <p><?= $result[0]['user_firstname'] ?> <?= $result[0]['user_lastname'] ?></p>
+            </section>
         </div>
 
-        <div>
+        <div class="profile-notes">
             <h3>Notes</h3>
+            <hr>
             <?php foreach ($notesresult as $record): ?>
             
+                    <div class="prev-notes">
                     <h4> <?= $record['user_firstname'] ?> <?= $record['user_lastname'] ?> </h4>
                     <p> <?= $record['notes_comment'] ?> </p>
                     <p> <?= $record['notes_created_at'] ?> </p>
+                    </div>
                 
             <?php endforeach; ?>
-            <div>
+            <div class="create-note">
                 <h3>Add a note about <?= $result[0]['firstname'] ?></h3>
                 <textarea name="notepad" id="notepad" cols="30" rows="10"></textarea>
-                <button id="notesbutton">Submit Note</button>
+                <button class="create-note-btn" id="notesbutton">Submit Note</button>
             </div> 
         </div>
            
         <?php else: ?>
             <p>No contact found.</p>
         <?php endif; ?>
-
-
-        <ul>
-            <?php foreach ($result[0] as $key => $value): ?>
-                <li><?= $key ?>: <?= $value ?></li>
-            <?php endforeach; ?>
-        </ul>
-
-
-     
 </div>
 

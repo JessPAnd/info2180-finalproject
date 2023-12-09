@@ -2,6 +2,14 @@ window.onload = () => {
 
     contactId = 1;
     result = document.querySelector('.content');
+    let toggle = document.querySelector(".toggle");
+    let navigation = document.querySelector(".navigation");
+    let main = document.querySelector(".main");
+
+    toggle.onclick = function () {
+        navigation.classList.toggle("active");
+        main.classList.toggle("active");
+    };
 
     function loadPage() {
        return fetch(`http://localhost/info2180-project2/full-contact/full-contact.php?contact_id=${contactId}`)
@@ -59,7 +67,7 @@ window.onload = () => {
         fetch(`http://localhost/info2180-project2/full-contact/full-contact.php?contact_id=${contactId}&action=${action}`)
             .then(response => response.text())
             .then(data => {
-                loadPage();
+                loadPage().then(() => {pageEvents();})
                 console.log(data);
             })
             .catch(error => {
@@ -95,7 +103,7 @@ window.onload = () => {
             // noteText = data;
 
             // error messages are received through here so the function is sending and receiving.
-            loadPage();
+            loadPage().then(() => {pageEvents();})
             console.log('fetchResponse', responseData)
         })
         .catch(error => {
