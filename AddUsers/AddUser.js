@@ -18,6 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 if(this.readyState == 4 && this.status == 200) 
                 {
                     console.log("User added");
+                    alert('User was successfully added!');
                 }
             };
             let data = new URLSearchParams();
@@ -31,6 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
         else 
         {
             console.log("Failed to add user");
+            alert('Failed to add user. Please check the input fields.');
         }
     });
 });
