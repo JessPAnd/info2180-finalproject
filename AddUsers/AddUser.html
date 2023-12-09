@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Dolphin CRM</title>
+        <meta charset= "utf-8"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="AddUser.css">
+        <script src="AddUser.js"></script>
+    </head>
+    <body>
+        <header class="container">
+            <img class="dolphin" src="Dolphin.png"> 
+            <h4>Dolphin CRM</h4>
+        </header>
+        <main>
+            <aside class ="sidebar">
+                <nav>
+                    <ul>
+                        <li>
+                            <img class = "homeimg" src="icons8-home-50.png" alt="Home">
+                            <p><a href="link to dashboard">Home</a></p>
+                        </li>
+                        <li>
+                            <img class = "contactimg" src="icons8-contacts-50.png" alt="New Contact">
+                            <p><a href="link to new contant">New Contact</a></p>
+                        </li>
+                        <li>
+                            <img class = "usersimg" src="icons8-users-30.png" alt="List of Users">
+                            <p><a href="ViewUsers.php">List of Users</a></p>
+                        </li>
+                        <hr>
+                        <li>
+                            <img class = "logoutimg" src="icons8-logout-48.png" alt="Logout">
+                            <p><a href="Logout.php">Logout</a></p>
+                        </li>
+                    </ul>
+                </nav>
+            </aside>
+            
+            <section class = "form">
+                <div class = "containterform">
+                    <h1><b>NEW USER</b></h1>
+                </div>
+
+                <form id="form" action="AddUser.php" method="post">
+
+                    <div class= "fname">
+                        <label for="fname">First Name:</label><br>
+                        <input type="text" id="fname" name="fname" placeholder="John" required><br>
+                    </div>
+
+                    <div class= "lname">
+                        <label for="lname">Last Name:</label><br>
+                        <input type="text" id="lname" name="lname" placeholder="Doe" required><br>
+                    </div>
+
+                    <div class= "email">
+                        <label for="email">Email:</label><br>
+                        <input type="email" id="email" name="email" placeholder="example@example.com" required><br>
+                    </div>
+
+                    <div class= "password">
+                        <label for="password">Password:</label><br>
+                        <input type="password" id="password" name="password" required><br>
+                    </div>
+
+                    <div class= "role">
+                        <label for="role">Role:</label> <br>
+                        <select id="role" name="role">
+                            <option value="admin">Admin</option>
+                            <option value="member">Member</option>
+                        </select>
+                    </div>
+                    <div id="results">
+                    </div>
+                    <div>
+                        <button type="submit" id="savebtn" class="btn">Save</button>
+                    </div>
+                </form>
+            </section>
+            <footer>
+                <p>Copyright @2023 Dolphin CRM</p>
+            </footer>
+        </main>
+    </body>
+</html>
