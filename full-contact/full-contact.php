@@ -96,7 +96,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['contact_id'])) {
                                 users.password AS user_password,
                                 users.email AS user_email,
                                 users.role AS user_role,
-                                users.created_at AS user_created_at                    
+                                users.created_at AS user_created_at,
+                                DATE_FORMAT(contacts.created_at, "%M %e %Y") AS formatted_created_at,
+                                DATE_FORMAT(contacts.updated_at, "%M %e %Y") AS formatted_updated_at
                                 FROM contacts 
                                 JOIN users ON contacts.created_by = users.id
                                 WHERE contacts.id =  :contact_id' );
@@ -112,7 +114,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['contact_id'])) {
                                 users.id AS user_id, 
                                 users.firstname AS user_firstname, 
                                 users.lastname AS user_lastname,
-                                contacts.id
+                                contacts.id,
+                                DATE_FORMAT(notes.created_at, "%M %e %Y") AS formatted_notes_created_at
                                 FROM notes 
                                 JOIN users ON notes.created_by = users.id
                                 JOIN contacts ON contacts.id = notes.contact_id
@@ -135,8 +138,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['contact_id'])) {
             </div>
             <div>
             <h2><?= $result[0]['firstname'] ?> <?= $result[0]['lastname'] ?></h2>
-            <p>Created on: <?= $result[0]['created_at'] ?> by <?= $result[0]['user_firstname'] ?> <?= $result[0]['user_lastname'] ?></p>
-            <p>Updated on: <?= $result[0]['updated_at'] ?></p>
+            <p>Created on: <?= $result[0]['formatted_created_at'] ?> by <?= $result[0]['user_firstname'] ?> <?= $result[0]['user_lastname'] ?></p>
+            <p>Updated on: <?= $result[0]['formatted_updated_at'] ?></p>
             </div>
             </section>
             <section class="profile-btns">
@@ -175,7 +178,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['contact_id'])) {
                     <div class="prev-notes">
                     <h4> <?= $record['user_firstname'] ?> <?= $record['user_lastname'] ?> </h4>
                     <p> <?= $record['notes_comment'] ?> </p>
-                    <p> <?= $record['notes_created_at'] ?> </p>
+                    <p> <?= $record['formatted_notes_created_at'] ?> </p>
                     </div>
                 
             <?php endforeach; ?>
