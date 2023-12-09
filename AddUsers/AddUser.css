@@ -1,36 +1,52 @@
-body {
-    font-family: Arial, sans-serif;
-    display: flex;
-    background-color: rgb(180, 178, 178);
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
 }
 
-.container {
+body {
+    display: grid;
+    grid-template-columns: 240px auto;
+    grid-template-rows: auto;
+}
+
+.main--content{
+    position: relative;
+    background-color: midnightblue;
+    width: 100%;
+    padding: 5px;
+}
+
+.header--wrapper{
+    grid-column: 1 / span 2;
     display: flex;
-    align-items: center;
+    justify-content: space-between;
+    align-items: start;
+    background-color: midnightblue;
     padding: 20px;
-    position: fixed;
+    margin-bottom: 1rem;
+    width: 700%
+}
+
+.header--title{
+    color: white;
+    font-size: 22 ;
+    font-family: 'Times New Roman', Times, serif ;
+    text-align: justify;
+}
+
+.sidebar{
+    grid-row: 2;
     top: 0;
     left: 0;
-    right: 0;
-    height: 20px;
-    background-color: rgb(7, 7, 54);
-    color: white;
-}
-
-.container img {
-    height: 50px;
-    margin-right: 20px;
-}
-
-.sidebar {
-    position: fixed;
-    top: 60px;
-    left: 0;
-    width: 220px;
-    height: 150%;
+    bottom: 0;
+    width: 240px;
+    height: 100vh;
+    padding: 0 1.7rem;
+    color: black;
     background-color: white;
-    color: #32332C;
-    transition: all 0.3s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .link {
@@ -50,29 +66,21 @@ body {
     margin-right: 10px;
 }
 
-.link a {
-    text-decoration: none;
-    color: black;
-}
-
-.link:hover {
-    background-color: grey;
-}
-
 .form {
+    grid-column: 2;
+    grid-row: 2;
     flex-grow: 1;
-    padding: 20px;
+    padding: 15px;
     color: black;
-    margin-left: 350px; 
-    width: 130%; 
-    height: 100%;
+    margin-left: 250px; 
+    width: 70%; 
     background-color: white;
     box-shadow: 0px 0px 10px rgba(0,0,0,0.5);
 }
 
 .containterform {
     background-color: white;
-    padding: 40px;
+    padding: 30px;
 }
 
 .fname, .lname, .email, .password {
