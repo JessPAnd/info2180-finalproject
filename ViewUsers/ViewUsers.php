@@ -18,7 +18,7 @@
                   </a>
               </li>
               <li>
-                   <a href="New-contact.php">
+                   <a href="../New-contact.php">
                      <i class="far fa-user-circle"></i>
                      <span>New Contact</span>
                    </a>

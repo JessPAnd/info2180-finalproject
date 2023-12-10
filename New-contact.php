@@ -158,7 +158,7 @@ $stmt = $conn->query('SELECT * FROM users');
         </main>
         <div id='sidebar' class='grid-item'>
             <div class='buttonaside' id='home'>
-                <a href='dashboard.php'>Home</a>
+                <a href='./Dolphin_CRM_Project1(draft2)/dashboard.html'>Home</a>
             </div>
             <div class='buttonaside' id='New-contact'>
                 <a href='New-contact.php'>New Contact</a>

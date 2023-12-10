@@ -9,25 +9,12 @@
     $users=[];
     $conn = new PDO("mysql:host=$host;dbname=$dname;charset=utf8mb4", $username, $password);
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    
-    // $validUsername = "demo";
-    // $validPassword = "password";
+
     $validUsername = isset($_POST['username']) ? filter_input(INPUT_POST, 'username', FILTER_SANITIZE_STRING) : '';
     $validPassword = isset($_POST['password']) ? filter_input(INPUT_POST, 'password', FILTER_SANITIZE_STRING) : '';
 
-    // $username = $_POST["username"];
-    // $password = $_POST["password"];
-
-    // if ($username === $validUsername && $password === $validPassword) {
-    //     // Successful login - direct to next page
-    //     echo "Login successful! Welcome, $username!";
-    // } else {
-    //     // Invalid login
-    //     echo "Invalid username or password. Please try again.";
-    // }
 
     $stmt = $conn->prepare('SELECT * FROM users');
-    // $stmt->bindParam(':username', $validUsername);
         $stmt->execute();
         $users = $stmt->fetchAll(PDO::FETCH_ASSOC);
         foreach ($users as $user) {

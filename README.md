@@ -8,4 +8,6 @@ Dolphin CRM
 
  The Add Users page can be accessed from the Side Menu on the Dashboard Page.
 
- Username === User['firstname'];
+ The users created by Schema.sql should provide initial access to the system.
+
+ Username to login is equal to the firstname of a stored user.
