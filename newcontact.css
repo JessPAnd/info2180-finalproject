@@ -113,13 +113,6 @@ a:hover{
     padding-left: 20px;
 }
 
-#button-section {
-    position: absolute;
-    bottom: 0;
-    right: 0;
-    margin: 10px;
-}
-
 #button{
     width:7%; 
     padding:3px; 

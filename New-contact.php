@@ -68,9 +68,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->bind_param('ssssssss', $title, $fname, $lname, $email, $phone, $company, $type, $assignedto);
 
     if ($stmt->execute()) {
-        echo 'Added to the database';
+        $confirmationMessage = 'Data has been stored successfully!';
     } else {
-        echo 'Error: ' . $stmt->error;
+        $confirmationMessage = 'Error: ' . $stmt->error;
     }
 
     $stmt->close();
@@ -101,7 +101,12 @@ $stmt = $conn->query('SELECT * FROM users');
         </div>
         <main>
             <div id='body' class='grid-item'>
-                <h2>New Contact</h2>                      
+                <h2>New Contact</h2>
+                <?php
+                    if (isset($confirmationMessage)) {
+                        echo '<p>' . $confirmationMessage . '</p>';
+                    }
+                ?>                      
                 <form method='post' action='New-contact.php'>
                     <div class='form-group'>
                         <label>Title</label><br>
@@ -168,3 +173,4 @@ $stmt = $conn->query('SELECT * FROM users');
     </div>
 </body>
 </html>
+
