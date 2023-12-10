@@ -5,7 +5,7 @@ $host = 'localhost:3307';
 $username = 'DolphinAdmin';
 $password = 'password123';
 $dname = 'dolphin_crm';
-
+$sessionId = session_id();
 $conn = new PDO("mysql:host=$host;dbname=$dname;charset=utf8mb4", $username, $password);
 
 $stmt = $conn->query("SELECT * FROM contacts");

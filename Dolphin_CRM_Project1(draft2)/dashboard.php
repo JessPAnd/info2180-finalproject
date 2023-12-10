@@ -4,7 +4,7 @@ $host = 'localhost:3307';
 $username = 'DolphinAdmin';
 $password = 'password123';
 $dname = 'dolphin_crm';
-
+$sessionId = session_id();
 $conn = new PDO("mysql:host=$host;dbname=$dname;charset=utf8mb4", $username, $password);
 
 $stmt = $conn->query("SELECT * FROM contacts");
@@ -12,8 +12,7 @@ $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
 // print_r($results);
 $result = '';
 
-// $current_user_id = $_SESSION['user_id']; 
-$current_user_id = 3;
+$current_user_id =  $_SESSION['user_id'];
 
 
 //GET Request to load page
