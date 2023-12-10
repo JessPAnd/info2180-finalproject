@@ -314,22 +314,9 @@
                                 </select>
                             </div>
                         </div>
-                       
-                     <table id="contactTable">
-                        <thead>
-                            <tr>
-                                <th>Title</th>
-                                <th>Full Name</th>
-                                <th>Email Address</th>
-                                <th>Company</th>
-                                <th>Contact Type</th>
-                                <th>Details</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <!-- Contacts will be dynamically added here -->
-                        </tbody>
-                    </table>
+                   <div id ="contactTableBody">
+                   </div>    
+                   
                 </div>
                 </div>
             </div>
@@ -350,7 +337,7 @@
 
             // Select relevant DOM elements
             const contactFilter = document.getElementById("contactFilter");
-            const contactTableBody = document.querySelector("#contactTable tbody");
+            const contactTableBody = document.querySelector("#contactTableBody");
             const addContactBtn = document.querySelector(".add-contact-btn");
 
             // Event listener for filter changes
@@ -371,19 +358,19 @@
             // Function to fetch and display contacts
             function fetchContacts(filter) {
                 // API endpoint and logic
-                fetch(`/api/contacts?filter=${filter}`)
+                fetch(`http://localhost/info2180-finalproject/Dolphin_CRM_Project1(draft2)/dashboard.php?filter=${filter}`)
                     .then(response => {
                         if (!response.ok) {
                             throw new Error(`HTTP error! Status: ${response.status}`);
                         }
-                        return response.json();
+                        return response.text();
                     })
                     .then(data => {
                         // Clear existing table rows
-                        contactTableBody.innerHTML = "";
+                        contactTableBody.innerHTML = "data";
 
                         // Populate table with fetched contacts
-                        data.forEach(contact => {
+                        /*data.forEach(contact => {
                             const row = document.createElement("tr");
                             row.innerHTML = `
                                 <td>${contact.title}</td>
@@ -391,17 +378,18 @@
                                 <td>${contact.email}</td>
                                 <td>${contact.company}</td>
                                 <td>${contact.contactType}</td>
-                                <td><a href="#" onclick="viewContactDetails(${contact.id})">View Details</a></td>
                             `;
                             contactTableBody.appendChild(row);
-                        });
+                        });*/
                     })
                     .catch(error => console.error("Error fetching contacts:", error));
             }
 
             // Function to handle viewing contact details
             function viewContactDetails(contactId) {
-                // Implement logic to show details, for example, open a modal
+
+                window.location.href = '../../full-contact/full-contact.html?contact_id=' + contactId;
+                
                 alert(`Implement logic to view details for contact with ID ${contactId}`);
             }
         });
