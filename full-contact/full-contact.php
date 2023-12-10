@@ -27,7 +27,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
        
         if (!empty($contact_id)) {
-            $current_user_id = 3; 
+            $current_user_id = $_SESSION['user_id']; 
 
             $stmt3 = $conn->prepare("INSERT INTO notes (contact_id, comment, created_by) VALUES (:contact_id, :comment, :current_user_id)");
             $stmt3->bindParam(':current_user_id', $current_user_id, PDO::PARAM_INT);
@@ -106,6 +106,23 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['contact_id'])) {
     $stmt->execute();
     $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
+        $stmt3 = $conn->prepare('SELECT contacts.*,
+                                users.id AS user_id, 
+                                users.firstname AS user_firstname, 
+                                users.lastname AS user_lastname,
+                                users.password AS user_password,
+                                users.email AS user_email,
+                                users.role AS user_role,
+                                users.created_at AS user_created_at,
+                                DATE_FORMAT(contacts.created_at, "%M %e %Y") AS formatted_created_at,
+                                DATE_FORMAT(contacts.updated_at, "%M %e %Y") AS formatted_updated_at
+                                FROM contacts 
+                                JOIN users ON contacts.assigned_to = users.id
+                                WHERE contacts.id =  :contact_id' );
+    $stmt3->bindParam(':contact_id', $contact_id, PDO::PARAM_INT);
+    $stmt3->execute();
+    $assignedresult = $stmt3->fetchAll(PDO::FETCH_ASSOC);
+
     $stmt2 = $conn->prepare('SELECT 
                                 notes.contact_id AS notes_contact_id,
                                 notes.comment AS notes_comment,
@@ -166,7 +183,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['contact_id'])) {
             </section>
             <section>
             <p>Assigned To</p>
-            <p><?= $result[0]['user_firstname'] ?> <?= $result[0]['user_lastname'] ?></p>
+            <p><?= $assignedresult[0]['user_firstname'] ?> <?= $assignedresult[0]['user_lastname'] ?></p>
             </section>
         </div>
 

@@ -2,6 +2,6 @@
     session_start();
     // Destroy the session
     session_destroy();
-    header('Location: ../login.php');   //login Page link here
+    header('Location: ../login-page.html');   //login Page link here
     exit();
 ?>
