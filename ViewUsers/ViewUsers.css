@@ -1,0 +1,103 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap");
+*{
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
+}
+body {
+    display: grid;
+    grid-template-rows: auto auto; 
+    grid-template-columns: 240px auto; 
+}
+
+.main--content{
+    grid-row: 2;
+    grid-column: 2;
+    position: relative;
+    background-color: white;
+    width: 100%;
+    padding: 5px;
+}
+
+.header--wrapper{
+    grid-row: 1;
+    grid-column: 1/ span 2; 
+    display: flex;
+    justify-content: space-between;
+    align-items: start;
+    background-color: midnightblue;
+    border-radius: 20px;
+    padding: 20px;
+    margin-bottom: 1rem;
+    width: 100%; 
+}
+
+.header--title{
+    color: white;
+    font-size: 22px;
+    font-family: 'Times New Roman', Times, serif;
+    text-align: justify;
+}
+
+.sidebar{
+    grid-row: 2;
+    grid-column: 1; 
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 240px;
+    height: 100vh;
+    padding: 0 1.7rem;
+    color: black;
+    background-color: white;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.link {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.logout {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.homeimg, .contactimg, .usersimg, .logoutimg {
+    height: 30px;
+    margin-right: 10px;
+}
+
+table thead{
+    background-color: #F3F4F6;
+    height: 50px;   
+}
+
+table tbody tr{
+    border-bottom: 1px solid lightgray;
+    height: 40px;
+}
+
+table tbody tr .name{
+    font-weight: bold;
+}
+
+.email, .role, .created_at{
+   color: #a7a9b3;
+}
+
+.users-header {
+    display: flex; 
+    justify-content: space-between;
+    align-items: center;
+}
+
+.add-user-btn {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
