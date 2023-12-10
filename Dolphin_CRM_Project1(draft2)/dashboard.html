@@ -168,6 +168,13 @@
                         contactTableBody.innerHTML = data;
                       
                     })
+                    .then( () => {
+                        const viewContactBtn = document.querySelector("#contactBtn");
+                        viewContactBtn.addEventListener("click", function () {
+                            currentUserID = this.getAttribute('current-contact-id');
+                            viewContactDetails(currentUserID);
+                })
+                     })
                     .catch(error => console.error("Error fetching contacts:", error));
             }
 
