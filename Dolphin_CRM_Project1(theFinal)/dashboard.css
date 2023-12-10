@@ -298,6 +298,24 @@ th {
     background-color: var(--table-heading);
 }
 
+/* Style for View Button */
+.contactBtn {
+    background-color:var(--highlight-color); 
+    border: none; 
+    color: var(--white);
+    padding: 10px 20px; 
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px; 
+    cursor: pointer; 
+    border-radius: 5px; 
+  }
+  
+.contactBtn:hover {
+    background-color:var(--highlight-color2)
+  }
+  
 
 
 
