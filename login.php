@@ -22,13 +22,16 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             if ($user['firstname'] === $validUsername && $user['password'] === $hashedInputPassword){
                 $_SESSION['user_id'] = $user['id'];
                 $_SESSION['role'] = $user['role'];
-                echo json_encode(['status' => 'success']);
+                $loginsuccess = true;
                 break;
                 
-            } else {
-                echo json_encode(['status' => 'fail']);
-                }
-        
+            }        
+        }
+
+        if ($loginsuccess) {
+            echo json_encode(['status' => 'success']);
+        }else {
+            echo json_encode(['status' => 'fail']);
         }
         
 

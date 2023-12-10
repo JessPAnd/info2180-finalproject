@@ -154,7 +154,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['contact_id'])) {
             <img src="./avatar-1577909_1280.png" alt="user avatar">
             </div>
             <div>
-            <h2><?= $result[0]['firstname'] ?> <?= $result[0]['lastname'] ?></h2>
+            <h2><?= $result[0]['title'] ?> <?= $result[0]['firstname'] ?> <?= $result[0]['lastname'] ?></h2>
             <p>Created on: <?= $result[0]['formatted_created_at'] ?> by <?= $result[0]['user_firstname'] ?> <?= $result[0]['user_lastname'] ?></p>
             <p>Updated on: <?= $result[0]['formatted_updated_at'] ?></p>
             </div>

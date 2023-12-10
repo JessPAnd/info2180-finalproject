@@ -1,10 +1,15 @@
 <?php
 session_start();
-
-$conn = mysqli_connect('localhost', 'Michael', 'password123', 'dolphin_crm');
-if ($conn->connect_error) {
-    die('Connection Error: ' . $conn->connect_error);
-}
+$host = 'localhost:3307';
+$username = 'DolphinAdmin';
+$password = 'password123';
+$dname = 'dolphin_crm';
+$sessionId = session_id();
+$conn = new PDO("mysql:host=$host;dbname=$dname;charset=utf8mb4", $username, $password);
+// $conn = mysqli_connect('localhost', 'Michael', 'password123', 'dolphin_crm');
+// if ($conn->connect_error) {
+//     die('Connection Error: ' . $conn->connect_error);
+// }
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     function sanitizeInput($input, $conn)
