@@ -32,14 +32,14 @@ INSERT INTO users(firstname, lastname, password, email, role) VALUES
 /*!40000 ALTER TABLE users ENABLE KEYS */;
 UNLOCK TABLES;
 
--- Create a new user
-CREATE USER 'Peter'@'localhost' IDENTIFIED BY 'password115';
+-- -- Create a new user
+-- CREATE USER 'DolphinAdmin'@'localhost' IDENTIFIED BY 'password123';
 
--- Grant privileges to the user
-GRANT ALL PRIVILEGES ON dolphin_crm.* TO 'Peter'@'localhost';
+-- -- Grant privileges to the user
+-- GRANT ALL PRIVILEGES ON dolphin_crm.* TO 'DolphinAdmin'@'localhost';
 
--- Apply the changes
-FLUSH PRIVILEGES;
+-- -- Apply the changes
+-- FLUSH PRIVILEGES;
 
 
 -- Table structure for table contacts

@@ -15,9 +15,9 @@
 
     $hash_password = password_hash($password, PASSWORD_BCRYPT);
 
-    $host = 'localhost';
+    $host = 'localhost:3307';
     $dbname = 'dolphin_crm';
-    $username_db = 'admin';
+    $username_db = 'DolphinAdmin';
     $password_db = 'password123';
 
     try {

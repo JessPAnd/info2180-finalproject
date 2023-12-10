@@ -31,7 +31,7 @@
 });
 
 function loadPage() {
-    return fetch(`http://localhost/info2180-project2/full-contact/full-contact.php?contact_id=${contactId}`)
+    return fetch(`http://localhost/info2180-finalproject/full-contact/full-contact.php?contact_id=${contactId}`)
      .then(response => {
          if(response.ok) {
              return response.text();

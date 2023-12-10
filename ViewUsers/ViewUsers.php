@@ -12,7 +12,7 @@
          <div class ="dolphinLogo"></div>
            <ul class="menu">
               <li>
-                  <a href="dashboard.html">
+                  <a href="../Dolphin_CRM_Project1(draft2)/dashboard.html">
                       <i class="fas fa-home"></i>
                       <span> Home</span>
                   </a>
@@ -24,13 +24,13 @@
                    </a>
               </li>
                <li>
-                   <a href="ViewUsers.html">
+                   <a href="ViewUsers.php">
                      <i class="fas fa-users"></i>
                      <span>Users</span>
                    </a>
              </li>
                <li>
-                   <a href="Logout.php">
+                   <a href="../Logout/Logout.php">
                      <i class="fa fa-sign-out"></i>
                      <span>Logout</span>
                    </a>
@@ -60,9 +60,9 @@
                   exit;
               }
 
-              $host = 'localhost';
+              $host = 'localhost:3307';
               $dbname = 'dolphin_crm';
-              $username_db = 'admin';
+              $username_db = 'DolphinAdmin';
               $password_db = 'password123';
 
               try {
