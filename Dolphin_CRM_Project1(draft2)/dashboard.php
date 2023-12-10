@@ -1,8 +1,8 @@
 <?php
 session_start();
-$host = 'localhost:3307';
-$username = 'Peter';
-$password = 'password115';
+$host = 'localhost';
+$username = 'Michael';
+$password = 'password123';
 $dname = 'dolphin_crm';
 
 $conn = new PDO("mysql:host=$host;dbname=$dname;charset=utf8mb4", $username, $password);
