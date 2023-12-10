@@ -33,10 +33,10 @@ INSERT INTO users(firstname, lastname, password, email, role) VALUES
 UNLOCK TABLES;
 
 -- Create a new user
-CREATE USER 'Michael'@'localhost' IDENTIFIED BY 'password123';
+CREATE USER 'Peter'@'localhost' IDENTIFIED BY 'password115';
 
 -- Grant privileges to the user
-GRANT ALL PRIVILEGES ON dolphin_crm.* TO 'Michael'@'localhost';
+GRANT ALL PRIVILEGES ON dolphin_crm.* TO 'Peter'@'localhost';
 
 -- Apply the changes
 FLUSH PRIVILEGES;
