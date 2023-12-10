@@ -21,6 +21,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $type = isset($_POST['type']) ? sanitizeInput($_POST['type'], $conn) : '';
     $assignedto = isset($_POST['assignedto']) ? sanitizeInput($_POST['assignedto'], $conn) : '';
 
+    var_dump($title, $fname, $lname, $email, $phone, $company, $type, $assignedto);
+
     if (empty($fname) || !preg_match('/^[a-zA-Z\s]+$/', $fname)) {
         echo 'Please enter a valid First Name.';
         exit();
@@ -173,4 +175,3 @@ $stmt = $conn->query('SELECT * FROM users');
     </div>
 </body>
 </html>
-
