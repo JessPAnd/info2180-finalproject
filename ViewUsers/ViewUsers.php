@@ -60,7 +60,7 @@
                   exit;
               }
 
-              $host = 'localhost:3307';
+              $host = 'localhost';
               $dbname = 'dolphin_crm';
               $username_db = 'DolphinAdmin';
               $password_db = 'password123';

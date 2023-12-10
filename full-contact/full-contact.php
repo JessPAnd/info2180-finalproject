@@ -1,7 +1,7 @@
 <?php
 
 session_start();
-$host = 'localhost:3307';
+$host = 'localhost';
 $username = 'DolphinAdmin';
 $password = 'password123';
 $dname = 'dolphin_crm';
